@@ -57,7 +57,7 @@
                 
             })
             .catch(function(error){
-                //createErrorCard(error)
+                console.log(error)
             })
         }
         function createMovieCard(data){
@@ -69,6 +69,15 @@
             const title = document.createElement("h1");
             title.textContent = `${data.Title}`;
 
+            var num= data.imdbRating
+            if(num > 8.5){
+                var rec = document.createElement("p");
+                rec.textContent = "RECOMMENDED"
+                rec.style.color = "red"
+                rec.style.fontSize = "18px"
+                title.append(rec)
+            }
+
             const poster = document.createElement("img");
             poster.src = data.Poster;
 
@@ -79,7 +88,10 @@
             year.textContent = `Movie Year: ${data.Year}`;
 
             const rating = document.createElement("p");
-            rating.textContent = `Rating: ${data.Rated}`;
+            rating.textContent = `Rating: ${data.imdbRating}`
+            
+            //console.log(num)
+            
             
             const released = document.createElement("p");
             released.textContent = `Released: ${data.Released}`;
